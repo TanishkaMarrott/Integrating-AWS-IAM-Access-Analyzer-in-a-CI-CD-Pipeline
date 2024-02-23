@@ -1,6 +1,7 @@
-# 
+# Streamlining Security in CI/CD Workflows with AWS IAM Access Analyzer
 
---> Streamlining **policy management** and bolstering **IAM Security.**
+Securing & Automating deployments with a CI/CD pipeline built on AWS CodeCommit, CodePipeline and CodeBuild. This has been enhanced by integrating IAM Access Analyzer for robust policy checks and CloudFormation for infrastructure as code.
 
-We've leveraged **AWS CodeCommit, CodePipeline and CodeBuild** to create a **CI/CD pipeline** that deploys CloudFormation templates.
-And **integrated Access Analyzer** for **stringent policy validation checks**.
+Core idea is around **policy management** while bolstering **IAM Security.**
+
+
