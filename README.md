@@ -1,10 +1,10 @@
-# Incorporating Security in CI/CD Workflows with AWS IAM Access Analyzer
+# Enhancing CI/CD Workflows: Integrating AWS IAM Access Analyzer for Improved Security
 
-This project involves securing & automating deployments with a CI/CD pipeline built on top of AWS CodeCommit, CodePipeline and CodeBuild, with IAM Access Analyzer integrated for robust Policy Validation Checks and CloudFormation for Infrastructure as code.
+This project revolves around the idea - **_Security + Automation_**  
 
-The core idea is around **policy management** while bolstering **IAM Security.**
+We aim to elevate both efficiency and security within deployment processes by integrating a specialized tool, `cfn-policy-validator` , into a cohesive CI/CD Pipeline. This integration _**automates IAM Policy Validation Tests**_, ensuring **_IAM security is inherently a part of every deployment cycle_**, while automatically halting the build, in the event of its failure.  
 
-## Index
+---> Robust Security & Compliance throughout the Infrastructure
 
 
 ## Access Analyzer - Quick Walkthrough
