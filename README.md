@@ -9,15 +9,15 @@ We aim to elevate both efficiency and security within deployment processes by in
 
 ## What are the Core Components here?
 
-- **_AWS CodeCommit_** -
+- **_CodeCommit_** -
 This actually enables us to store our source code in **_secure, private Git-based Repos._**  
 It's **_a starting point of my pipeline_**,  each time a commit or a modification is made to the Source Code, it acts as a trigger, for subsequent steps in the pipeline. 
   
-- **_AWS CodeBuild_** -  It **_automates the build and test process_**   - it compiles the source code, links the modules, **_bundles necessary libraries into a single standalone package_**, or yeah, you may also call it an **_'artifact'_**
+- **_CodeBuild_** -  It **_automates the build and test process_**   - it compiles the source code, links the modules, **_bundles necessary libraries into a single standalone package_**, or yeah, you may also call it an **_'artifact'_**
 
-- **_AWS CodePipeline_** - Our orchestrator. It integrates all of the AWS Services together cohesively, enabling managed CI and CD Service. It automates software releases, making deployments quicker, more frequent and reliable. 
+- **_CodePipeline_** - Our orchestrator. It integrates all of the AWS Services together cohesively, enabling managed CI and CD Service. It automates software releases, making deployments quicker, more frequent and reliable. 
 
-- **_AWS IAM Access Analyzer_**
+- **_IAM Access Analyzer_**
 
 - 
 
