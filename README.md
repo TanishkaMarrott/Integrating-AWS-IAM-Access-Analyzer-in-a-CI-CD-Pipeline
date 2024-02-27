@@ -18,9 +18,13 @@ This actually enables us to store our source code in **_secure, private Git-base
 
 - **_<ins>CodePipeline</ins> -_**
 Our orchestrator. </br>
-It **_integrates all of the AWS Services together cohesively_,** enabling managed CI and CD Service. It **_automates software releases_**, making deployments quicker, more frequent and reliable. 
+It **_integrates all of the AWS Services together cohesively_,** enabling managed CI and CD Service. It **_automates software releases_**, making deployments quicker, more frequent and reliable.
 
-- **_IAM Access Analyzer_**
+- **_<ins>CloudFormation</ins> -_** Enables us to manage and provision resources in the Cloud Infrastructure, 
+We can then define and deploy resources in a much more reliable and repeatable manner 
+
+- **_<ins>IAM Access Analyzer</ins> -_**
+
 
 
 ## Access Analyzer - Quick Walkthrough
