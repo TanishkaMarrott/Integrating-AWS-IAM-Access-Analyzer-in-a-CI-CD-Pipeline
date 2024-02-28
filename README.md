@@ -8,33 +8,34 @@ We aim to elevate both efficiency and security within deployment processes by in
 
 
 ## What are the Core Components here?
-
- - **_<ins>CodeCommit</ins> -_**     
-This actually enables us to store our source code in **_secure, private Git-based Repos._**  </br> ==> It's **_a starting point of my pipeline_**,  each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline. </ins>
+ 
+ - **_<ins>CodeCommit</ins> -_** This actually enables us to store our source code in **_secure, private Git-based Repos._**  </br>  It's **_a starting point of my pipeline_**,  each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline. </ins>
   
-- **_<ins>CodeBuild</ins> -_**                    
-**_Automates build and test._** ==> it compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an **_'artifact'_**
+- **_<ins>CodeBuild</ins> -_** **_Automates build and test._**  it compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an **_'artifact'_**
 
-- **_<ins>CodePipeline</ins> -_**                          
-Our orchestrator. </br>
+- **_<ins>CodePipeline</ins> -_**_'Our orchestrator'_ </br>
 It **_integrates all of the AWS Services together cohesively_,** enabling managed CI and CD Service. </br>
-  ==> <ins>Automates software releases</ins>, making deployments quicker, more frequent and reliable.
+   <ins>Automates software releases</ins>, making deployments quicker, more frequent and reliable.
 
-- **_<ins>CloudFormation</ins> -_** </br> Enables us to **_manage and provision resources_** in the Cloud Infrastructure,       
-We can then define and <ins>deploy resources in a much more reliable and repeatable manner_</ins> 
+- **_<ins>CloudFormation</ins> -_** **_Manages and provisions resources_** in the Cloud Infrastructure, </br> We can then define and <ins>deploy resources in a much more reliable and repeatable manner_</ins> 
 
-- **_<ins> Access Analyzer</ins> -_** </br> Uses ML Algos to analyse if the policies attached to **_resources are overtly privileged_** / or if they need to be pruned down. Also, helps check if the resources are **_exposed to the internet_**
-
+- **_<ins> Access Analyzer</ins> -_** '_Our IAM Fortifier_'  </br> Uses ML Algorithms to analyse if the policies attached to **_resources are overtly privileged_** / or if they need to be pruned down. Also, helps check if the resources are **_exposed to the internet_**
 
 
 
-## Access Analyzer - Quick Walkthrough
+## How does Access Analyser bolster IAM Security?
 
-- Helps identify resources exposed to the public internet
-- Cross-Account Resource Access
-- Unused Access Control Policies ( This might lead to unintentional Privilege Escalation )
-- Automated Policy Generation through AWS CloudTrail Logs
-- Policy Validation against IAM Best Practices - ( Stringent Policy Checks for a compliant architecture )
+A quick preview for our non-security folks!
+
+**_Public Exposure_** Access Analyser helps detect nothing's accidentally public.
+**_Cross-Account Resource Access_** I spotlight who's peeking into my resources.
+**_Policy Optimization_** Redundant permissions are a big no. I keep it tight and right.
+**_Automated Insights_** Thanks to AWS CloudTrail, Access Analyser helps get **_smart policy recommendations._**
+**_Best Practices_**  Validate against AWS's stringent standards. If it's not compliant, it's not going through.
+
+Short, to the point, and with a bit of flair—just how I like my CI/CD pipeline security checks.
+
+
 
 
 
