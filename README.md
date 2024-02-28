@@ -8,24 +8,30 @@ We aim to elevate both efficiency and security within deployment processes by in
 
 
 ## What are the Core Components here?
- 
- - _<ins>CodeCommit</ins> -_ This actually enables us to store our source code in **_secure, private Git-based Repos._**  </br>  It's **_a starting point of my pipeline_**,  each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline. </ins>
+ Certainly, here's the paragraph with the subheadings modified as requested:
+
+- _<ins>CodeCommit</ins>_:- </br>
+ This actually enables us to store our source code in **secure, private Git-based Repos.** </br> It's **a starting point of my pipeline**, each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline.</ins>
   
-- _<ins>CodeBuild</ins> -_ **_Automates build and test._**  it compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an **_'artifact'_**
+- _<ins>CodeBuild</ins>_:-</br>**Automates build and test.** It compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an 'artifact.'
 
-- **_<ins>CodePipeline</ins> -_**_'Our orchestrator'_ </br>
-It **_integrates all of the AWS Services together cohesively_,** enabling managed CI and CD Service. </br>
-   <ins>Automates software releases</ins>, making deployments quicker, more frequent and reliable.
+- _<ins>CodePipeline</ins>_:- 'Our orchestrator' </br>
+It **integrates all of the AWS Services together cohesively**, enabling managed CI and CD Service. </br>
+   <ins>Automates software releases</ins>, making deployments quicker, more frequent, and reliable.
 
-- **_<ins>CloudFormation</ins> -_** **_Manages and provisions resources_** in the Cloud Infrastructure, </br> We can then define and <ins>deploy resources in a much more reliable and repeatable manner_</ins> 
+- _<ins>CloudFormation</ins>_:- </br>Manages and provisions resources in the Cloud Infrastructure, </br> We can then define and <ins>**deploy resources in a much more reliable and repeatable manner**</ins> 
 
-- **_<ins> Access Analyzer</ins> -_** '_Our IAM Fortifier_'  </br> Uses ML Algorithms to analyse if the policies attached to **_resources are overtly privileged_** / or if they need to be pruned down. Also, helps check if the resources are **_exposed to the internet_**
+- _<ins>Access Analyzer Integration</ins>_:- 'Our IAM Fortifier'  </br> **Uses ML Algorithms to analyse if the policies attached to resources are overtly privileged** / or if they need to be pruned down. Also, helps check if the resources are exposed to the internet
+
+## Key Tangibles
+
+1. **_Simplified Policy Management_**: Streamlining policy management **_at scale_**, -> Aim is to automate and simplify the enforcement of IAM policies **_across all deployment stages._**
+2. **_Enhanced IAM Security_**: Every aspect of the deployment **_adheres to strict security protocols._**
+3. **Automated Deployment Processes**: Automates & ensures that deployments are not only faster and more efficient but also _**consistently secure and compliant**_ with defined policies.
+4. **Robust Policy Validation Checks**: Integrates advanced policy validation. This means compliance and **_mitigating risks_** associated with IAM configurations.
 
 
-
-## How does Access Analyser bolster IAM Security?
-
-A quick preview for our non-security folks!
+## Insights into Access Analyser - And how does it align with the overarching Project Goals?
 
 1 - **_Public Exposure_**:- AA identifies resources which are accessible to an external entity. </br>
 
@@ -38,6 +44,8 @@ A quick preview for our non-security folks!
 5 - **_Best Practices_**:- Custom Policy Checks help validate against AWS's stringent standards. If it's not compliant, it's not going through. </br>
 
 6 - **_Policy Generation_**:- Generates IAM policies based on access activity in your AWS CloudTrail logs. </br>
+
+
 
 
 
