@@ -52,12 +52,23 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 - _Security Best Practices_:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
 
-- _Automated Policy Generation_:- Generates IAM policies **based on access activity in your AWS CloudTrail logs.** </br>
+- _Automated Policy Generation_:- Generates IAM policies **_based on access activity in your AWS CloudTrail logs._** </br>
 
 
-> Is there a way I can merge the two? 
+> _Is there a way I can merge the two? </br> Enter CFN Policy Validator_
 
 ## Integrating CFN Policy Validator into our CI/CD Pipeline 
+
+The IAM Policy Validator for AWS CloudFormation (`cfn-policy-validator`) is a command-line tool, that **_parses resource-based and identity-based policies in CF Templates_**.
+</br> It runs the policies through two types of Access Analyser APIs:
+
+- The `ValidatePolicy` API to validate IAM Policies and SCPs against IAM Policy grammar and IAM Best Practices
+- The `AccessPreview` APIs to determine if a resource-based policy allows Public or Cross-Account Access.
+
+
+
+
+
 
 
 
