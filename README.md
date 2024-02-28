@@ -22,6 +22,8 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 - _<ins>Access Analyzer Integration</ins>_:- 'Our IAM Fortifier'  </br> **Uses ML Algorithms to analyse if the policies attached to resources are overtly privileged** / or if they need to be pruned down. Also, helps check if the resources are exposed to the internet
 
+</br>
+
 ##  Key Tangibles we're looking at
 
 1. **_Simplified Policy Management:-_** ----> Streamlining things **_at scale_**, </br> ---> Aim is to automate and simplify the enforcement of IAM policies **_across all deployment stages._**
@@ -32,6 +34,7 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
    
 7. **_Robust Policy Validation Checks:-_** Increased compliance & **_mitigating risks_** associated with IAM configurations.
 
+</br>
 
 ## Insights into Access Analyser - And how it aligns with the overarching Project Goals?
 
@@ -39,7 +42,7 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
  - **_Cross-Account Resource Access_**:- Helps identify ***resources that have been shared with accounts outside our organisation***. </br>
 
- - **_Unused Permissions / PrivEsc Risks_**:- **_Redundant permissions_** are a big no. </br> Enables us to appropriately lock down Policies. </br>
+ - **_Unused Permissions / PrivEsc Risks_**:- **_'Redundant permissions are a big no'_**. </br> Enables us to appropriately lock down Policies. </br>
 
 - **_Smart Policy Recommendations_**:- Thanks to AWS CloudTrail, </br> Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
 
