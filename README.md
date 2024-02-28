@@ -24,28 +24,28 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 ##  Key Tangibles we're looking at
 
-1. **_Simplified Policy Management:-_** ----> Streamlining things **_at scale_**, ---> Aim is to automate and simplify the enforcement of IAM policies **_across all deployment stages._**
+1. **_Simplified Policy Management:-_** ----> Streamlining things **_at scale_**, </br> ---> Aim is to automate and simplify the enforcement of IAM policies **_across all deployment stages._**
 
 3. **_Enhanced IAM Security:-_** Every aspect of the deployment **_adheres to strict AWS Standards._**
    
-5. **Automated Deployment Processes:** Automates = Fast + efficient + Secure deployment
+5. **_Automated Deployment Process:-_** Automates = Fast + efficient + Secure deployment
    
-7. **Robust Policy Validation Checks:** Increased compliance & **_mitigating risks_** associated with IAM configurations.
+7. **_Robust Policy Validation Checks:-_** Increased compliance & **_mitigating risks_** associated with IAM configurations.
 
 
-## Insights into Access Analyser - And how does it align with the overarching Project Goals?
+## Insights into Access Analyser - And how it aligns with the overarching Project Goals?
 
-1 - **_Public Exposure_**:- AA identifies resources which are accessible to an external entity. </br>
+ - **_Unwanted Public Exposure_**:- Identifies resources which are **_accessible to an external entity_**. </br>
 
-2 - **_Cross-Account Resource Access_**:- Helps identify resources that have been shared with accounts outside our organisation. </br>
+ - **_Cross-Account Resource Access_**:- Helps identify ***resources that have been shared with accounts outside our organisation***. </br>
 
-3 - **_Policy Optimization_**:- Redundant permissions are a big no. Enables us to appropriately lock down Policies. </br>
+ - **_Unused Permissions / PrivEsc Risks_**:- **_Redundant permissions_** are a big no. </br> Enables us to appropriately lock down Policies. </br>
 
-4 - **_Automated Insights_**:- Thanks to AWS CloudTrail, Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
+- **_Smart Policy Recommendations_**:- Thanks to AWS CloudTrail, </br> Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
 
-5 - **_Best Practices_**:- Custom Policy Checks help validate against AWS's stringent standards. If it's not compliant, it's not going through. </br>
+- **_Security Best Practices_**:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
 
-6 - **_Policy Generation_**:- Generates IAM policies based on access activity in your AWS CloudTrail logs. </br>
+- **_Automated Policy Generation_**:- Generates IAM policies **based on access activity in your AWS CloudTrail logs.** </br>
 
 
 
