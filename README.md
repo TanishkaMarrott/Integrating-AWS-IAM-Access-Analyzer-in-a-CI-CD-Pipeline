@@ -9,9 +9,9 @@ We aim to elevate both efficiency and security within deployment processes by in
 
 ## What are the Core Components here?
  
- - **_<ins>CodeCommit</ins> -_** This actually enables us to store our source code in **_secure, private Git-based Repos._**  </br>  It's **_a starting point of my pipeline_**,  each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline. </ins>
+ - _<ins>CodeCommit</ins> -_ This actually enables us to store our source code in **_secure, private Git-based Repos._**  </br>  It's **_a starting point of my pipeline_**,  each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline. </ins>
   
-- **_<ins>CodeBuild</ins> -_** **_Automates build and test._**  it compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an **_'artifact'_**
+- _<ins>CodeBuild</ins> -_ **_Automates build and test._**  it compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an **_'artifact'_**
 
 - **_<ins>CodePipeline</ins> -_**_'Our orchestrator'_ </br>
 It **_integrates all of the AWS Services together cohesively_,** enabling managed CI and CD Service. </br>
@@ -27,13 +27,18 @@ It **_integrates all of the AWS Services together cohesively_,** enabling manage
 
 A quick preview for our non-security folks!
 
-**_Public Exposure_** Access Analyser helps detect nothing's accidentally public.
-**_Cross-Account Resource Access_** I spotlight who's peeking into my resources.
-**_Policy Optimization_** Redundant permissions are a big no. I keep it tight and right.
-**_Automated Insights_** Thanks to AWS CloudTrail, Access Analyser helps get **_smart policy recommendations._**
-**_Best Practices_**  Validate against AWS's stringent standards. If it's not compliant, it's not going through.
+1 - **_Public Exposure_**:- AA identifies resources which are accessible to an external entity. </br>
 
-Short, to the point, and with a bit of flair—just how I like my CI/CD pipeline security checks.
+2 - **_Cross-Account Resource Access_**:- Helps identify resources that have been shared with accounts outside our organisation. </br>
+
+3 - **_Policy Optimization_**:- Redundant permissions are a big no. Enables us to appropriately lock down Policies. </br>
+
+4 - **_Automated Insights_**:- Thanks to AWS CloudTrail, Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
+
+5 - **_Best Practices_**:- Custom Policy Checks help validate against AWS's stringent standards. If it's not compliant, it's not going through. </br>
+
+6 - **_Policy Generation_**:- Generates IAM policies based on access activity in your AWS CloudTrail logs. </br>
+
 
 
 
