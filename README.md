@@ -8,7 +8,6 @@ We aim to elevate both efficiency and security within deployment processes by in
 
 
 ## What are the Core Components here?
- Certainly, here's the paragraph with the subheadings modified as requested:
 
 - _<ins>CodeCommit</ins>_:- </br>
  This actually enables us to store our source code in **secure, private Git-based Repos.** </br> It's **a starting point of my pipeline**, each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline.</ins>
@@ -23,12 +22,15 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 - _<ins>Access Analyzer Integration</ins>_:- 'Our IAM Fortifier'  </br> **Uses ML Algorithms to analyse if the policies attached to resources are overtly privileged** / or if they need to be pruned down. Also, helps check if the resources are exposed to the internet
 
-## Key Tangibles
+##  Key Tangibles we're looking at
 
-1. **_Simplified Policy Management_**: Streamlining policy management **_at scale_**, -> Aim is to automate and simplify the enforcement of IAM policies **_across all deployment stages._**
-2. **_Enhanced IAM Security_**: Every aspect of the deployment **_adheres to strict security protocols._**
-3. **Automated Deployment Processes**: Automates & ensures that deployments are not only faster and more efficient but also _**consistently secure and compliant**_ with defined policies.
-4. **Robust Policy Validation Checks**: Integrates advanced policy validation. This means compliance and **_mitigating risks_** associated with IAM configurations.
+1. **_Simplified Policy Management:-_** ----> Streamlining things **_at scale_**, ---> Aim is to automate and simplify the enforcement of IAM policies **_across all deployment stages._**
+
+3. **_Enhanced IAM Security:-_** Every aspect of the deployment **_adheres to strict AWS Standards._**
+   
+5. **Automated Deployment Processes:** Automates = Fast + efficient + Secure deployment
+   
+7. **Robust Policy Validation Checks:** Increased compliance & **_mitigating risks_** associated with IAM configurations.
 
 
 ## Insights into Access Analyser - And how does it align with the overarching Project Goals?
