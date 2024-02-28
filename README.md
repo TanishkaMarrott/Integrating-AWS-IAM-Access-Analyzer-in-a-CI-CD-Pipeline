@@ -4,7 +4,7 @@ This project revolves around the idea - **_Security + Automation_**
 
 We aim to elevate both efficiency and security within deployment processes by integrating a specialized tool, `cfn-policy-validator` , into a cohesive CI/CD Pipeline. This integration _**automates IAM Policy Validation Tests**_, ensuring **_IAM security is inherently a part of every deployment cycle_**, while automatically halting the build, in the event of its failure.  
 
----> Robust Security & Compliance throughout the Infrastructure
+--> Robust Security & Compliance throughout the Infrastructure
 
 
 ## What are the Core Components here?
@@ -24,31 +24,49 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 </br>
 
-##  Key Tangibles we're looking at
 
-1. **_Simplified Policy Management:-_** ----> Streamlining things **_at scale_**, </br> ---> Aim is to automate and simplify the enforcement of IAM policies **_across all deployment stages._**
+## Key Tangibles at a Glance
 
-3. **_Enhanced IAM Security:-_** Every aspect of the deployment **_adheres to strict AWS Standards._**
-   
-5. **_Automated Deployment Process:-_** Automates = Fast + efficient + Secure deployment
-   
-7. **_Robust Policy Validation Checks:-_** Increased compliance & **_mitigating risks_** associated with IAM configurations.
+- **Streamlined Policy Management**: Scaling simplicity -> embedding IAM security  within every deployment cycle.
+
+- **Security Standards**: Each deployment  conforms to predefined security benchmarks -> the essence of Shift-Left Security.
+
+- **Optimized Deployment**: = Fast + Efficient + Secure
+
+- **Increased Compliance**: Policy validation checks -> compliance & reducing risks in IAM configurations.
 
 </br>
 
 ## Insights into Access Analyser - And how it aligns with the overarching Project Goals?
 
- - **_Unwanted Public Exposure_**:- Identifies resources which are **_accessible to an external entity_**. </br>
+![image](https://github.com/TanishkaMarrott/Integrating-AWS-IAM-Access-Analyzer-in-a-CI-CD-Pipeline/assets/78227704/13167157-1519-4296-a575-4dbbae7e1368)
 
- - **_Cross-Account Resource Access_**:- Helps identify ***resources that have been shared with accounts outside our organisation***. </br>
 
- - **_Unused Permissions / PrivEsc Risks_**:- **_'Redundant permissions are a big no'_**. </br> Enables us to appropriately lock down Policies. </br>
+ - _Unwanted Public Exposure_:- Identifies resources **_accessible to an external entity_**. </br>
 
-- **_Smart Policy Recommendations_**:- Thanks to AWS CloudTrail, </br> Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
+ - _Cross-Account Resource Access_:- Helps identify ***resources that have been shared with accounts outside our organisation***. </br>
 
-- **_Security Best Practices_**:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
+ - _Unused Permissions / PrivEsc Risks_:-  **_'Redundant permissions are a big no'_**. </br> Enables us to appropriately lock down policies. </br>
 
-- **_Automated Policy Generation_**:- Generates IAM policies **based on access activity in your AWS CloudTrail logs.** </br>
+- _Smart Policy Recommendations_:- Thanks to AWS CloudTrail, </br> Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
+
+- _Security Best Practices_:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
+
+- _Automated Policy Generation_:- Generates IAM policies **based on access activity in your AWS CloudTrail logs.** </br>
+
+
+> Is there a way I can merge the two? 
+
+## Integrating CFN Policy Validator into our CI/CD Pipeline 
+
+
+
+
+
+
+
+
+
 
 
 
