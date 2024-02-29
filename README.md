@@ -44,7 +44,7 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
  - _Unwanted Public Exposure_:- Identifies resources **_accessible to an external entity_**. </br>
 
- - _Cross-Account Resource Access_:- Helps identify ***resources that have been shared with accounts outside our organisation***. </br>
+ - _Cross-Account Resource Access_:- Helps identify ***resources that have been shared with accounts outside our organisation***, and remediates broad access. </br>
 
  - _Unused Permissions / PrivEsc Risks_:-  **_'Redundant permissions are a big no'_**. </br> Enables us to appropriately lock down policies. </br>
 
@@ -52,18 +52,33 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 - _Security Best Practices_:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
 
-- _Automated Policy Generation_:- Generates IAM policies **_based on access activity in your AWS CloudTrail logs._** </br>
+- _Automated Policy Generation_:- **_Generates fine-grained IAM policies_** based on access activity in your AWS CloudTrail logs. </br>
 
 
 > _Is there a way I can merge the two? </br> Enter CFN Policy Validator_
 
 ## Integrating CFN Policy Validator into our CI/CD Pipeline 
 
+
 The IAM Policy Validator for AWS CloudFormation (`cfn-policy-validator`) is a command-line tool, that **_parses resource-based and identity-based policies in CF Templates_**.
-</br> It runs the policies through two types of Access Analyser APIs:
+
+ It runs the policies through two types of Access Analyser APIs:
 
 - The `ValidatePolicy` API to validate IAM Policies and SCPs against IAM Policy grammar and IAM Best Practices
 - The `AccessPreview` APIs to determine if a resource-based policy allows Public or Cross-Account Access.
+
+### How does it actually work?
+
+The `cfn-policy-validator` tool has two actions that it can perform - `parse` and `validate`
+
+`parse` - it walks through each CloudFormation resource in the template, **_extracts identity-based & resource-based IAM policies_**. While parsing a template, the tool **_resolves CloudFormation intrinsic functions  and pseudo parameters_**. 
+
+The `validate` action parses your template, **_passes the identity-based and resource-based IAM policies to Access Analyzer_**, & **_reports these findings_**
+
+```bash
+cfn-policy-validator parse --template-path cfn-policy-validator/parse-template.json --region us-east-1
+```
+
 
 
 
