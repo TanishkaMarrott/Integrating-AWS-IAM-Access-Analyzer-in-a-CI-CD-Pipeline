@@ -54,18 +54,38 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 - _Automated Policy Generation_:- **_Generates fine-grained IAM policies_** based on access activity in your AWS CloudTrail logs. </br>
 
+</br>
 
-> _Is there a way I can merge the two? </br> Enter CFN Policy Validator_
+>  Why not directly use Access Analyzer APIs to scan CF templates?
+</br>
 
-## Integrating CFN Policy Validator into our CI/CD Pipeline 
+## The Pain-Point
 
+I was leading the Cloud Security Team at one of my previous companies.      
+Reducing the use of the wildcard (`*`) by Developer Teams, in the resource Section of IAM Policies, was really challenging.   
+    
+This was primarily because we relied on the **ARNs** of resources, which were only available to us _**post-deployment**_. This meant that we lacked a mechanism to **preprocess the CF templates** for security analysis by **Access Analyzer**.
 
-The IAM Policy Validator for AWS CloudFormation (`cfn-policy-validator`) is a command-line tool, that **_parses resource-based and identity-based policies in CF Templates_**.
+A notable limitation of **Access Analyzer** is its inability to **parse templates and resolve CloudFormation's dynamic parameters**. This shortfall made it difficult to ensure our policies were as tight and secure as possible before deployment.
 
- It runs the policies through two types of Access Analyser APIs:
+</br>
 
-- The `ValidatePolicy` API to validate IAM Policies and SCPs against IAM Policy grammar and IAM Best Practices
-- The `AccessPreview` APIs to determine if a resource-based policy allows Public or Cross-Account Access.
+## The Solution - Integrating CFN Policy Validator into our CI/CD Pipeline 
+
+A heads-up here... It's absolutely crucial that we have a mechanism in place that is capable of resolving dynamic references, in order to ansure the effeectiveness of our Security Analysis. Because cloudFormation allows the use of Intrinsic Functions and Pseudo Parameters. 
+
+Okay, so the former is some reference to dynamic values available during runtime, for example, `Fn::Sub`, `Fn::GetAtt` Dynamic Referencing, conditionals etc
+While the latter refers to some static, predefined, maybe AWS-specific values, like AWS Account, AWS Region and so on.
+
+</br>
+
+I came across this solution at _**AWS: ReInforce 2022**._ It's a conference aimed at making super-robust, secure solutions in the Cloud.
+
+IAM Policy Validator for AWS CloudFormation (`cfn-policy-validator`)...    
+It's a command-line tool, that **_parses resource-based and identity-based policies in CF Templates_**. It runs the policies through two types of Access Analyser APIs:
+
+- The `ValidatePolicy` API -- to  validate IAM Policies and SCPs against IAM Policy grammar and IAM Best Practices
+- The `AccessPreview` APIs -- to determine if a resource-based policy allows Public or Cross-Account Access.
 
 ### How does it actually work?
 
@@ -75,7 +95,10 @@ The `cfn-policy-validator` tool has two actions that it can perform - `parse` an
 
 The `validate` action parses your template, **_passes the identity-based and resource-based IAM policies to Access Analyzer_**, & **_reports these findings_**
 
+#### Usage
+
 ```bash
+sudo pip3 install cfn-policy-validator
 cfn-policy-validator parse --template-path cfn-policy-validator/parse-template.json --region us-east-1
 ```
 
