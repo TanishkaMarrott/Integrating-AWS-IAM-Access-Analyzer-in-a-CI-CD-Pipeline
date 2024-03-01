@@ -10,18 +10,18 @@ We aim to elevate both efficiency and security within deployment processes by in
 
 ## Core Services we've used:-
 
-- CodeCommit:- </br>
+- CodeCommit </br>
 Store our source code in **secure, private Git-based Repos.** </br> It's **a starting point of my pipeline**, each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline.</ins>
   
-- CodeBuild:-</br> **--> Automates build and test.** Compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an 'artifact.'
+- CodeBuild </br> **--> Automates build and test.** Compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an 'artifact.'
 
-- CodePipeline:-  </br>
+- CodePipeline  </br>
 'Our orchestrator'. Integrates all of the services cohesively enabling managed CI and CD Service. </br>
    <ins>Automates software releases</ins>, deployments = quicker + more frequent + reliable.
 
-- CloudFormation:- </br>Infrastructure As a Code </br> We can then define and <ins>**deploy resources in a much more reliable and repeatable manner**</ins> 
+- CloudFormation </br>Infrastructure As a Code </br> We can then define and <ins>**deploy resources in a much more reliable and repeatable manner**</ins> 
 
-- Access Analyzer:-  </br> **Uses ML Algorithms to analyse if the policies attached to resources are overly privileged** / or if they need to be pruned down. And if the resources are exposed to the internet
+- Access Analyzer  </br> **Uses ML Algorithms to analyse if the policies attached to resources are overly privileged** / or if they need to be pruned down. And if the resources are exposed to the internet
 
 </br>
 
