@@ -2,10 +2,11 @@
 
 This project revolves around the idea - **_Security + Automation_**  
 
-We aim to elevate both efficiency and security within deployment processes by integrating a specialized tool, `cfn-policy-validator` , into a cohesive CI/CD Pipeline. This integration _**automates IAM Policy Validation Tests**_, ensuring **_IAM security is inherently a part of every deployment cycle_**, while automatically halting the build, in the event of its failure.  
+We aim to elevate both efficiency and security within deployment processes by integrating a specialized tool, `cfn-policy-validator` , into a cohesive CI/CD Pipeline. This integration _**automates IAM Policy Validation Tests**_, such that **_IAM security is inherently a part of every deployment cycle_**, while automatically halting the build, in the event of its failure.  
 
 --> Robust Security & Compliance throughout the Infrastructure
 
+</br>
 
 ## What are the Core Components here?
 
@@ -42,22 +43,20 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 ![image](https://github.com/TanishkaMarrott/Integrating-AWS-IAM-Access-Analyzer-in-a-CI-CD-Pipeline/assets/78227704/13167157-1519-4296-a575-4dbbae7e1368)
 
 
- &rarr; _Unwanted Public Exposure_:- Identifies resources **_accessible to an external entity_**. </br>
+Access Analyzer plays a critical role in identifying **Unwanted Public Exposure** by identifying resources that are accessible to external entities. 
 
-  &rarr; _Cross-Account Resource Access_:- Helps identify ***resources that have been shared with accounts outside our organisation***, and remediates broad access. </br>
+It also addresses **Cross-Account Resource Access**, identifying resources shared with external accounts and tightening access controls accordingly.
 
-  &rarr; _Unused Permissions / PrivEsc Risks_:-  **_'Redundant permissions are a big no'_**. </br> Enables us to appropriately lock down policies. </br>
+The tool  manages **Unused Permissions and Privilege Escalation Risks** by removing unnecessary permissions, --> the principle of least privilege. Through **Smart Policy Recommendations** from AWS CloudTrail data, it refines IAM policies for better security and efficiency.
 
- &rarr; _Smart Policy Recommendations_:- Thanks to AWS CloudTrail, </br> Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
+**Security Best Practices** are maintained through policy validations against AWS standards. 
 
- &rarr; _Security Best Practices_:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
-
- &rarr; _Automated Policy Generation_:- **_Generates fine-grained IAM policies_** based on access activity in your AWS CloudTrail logs. </br>
 
 </br>
 
 >  Why not directly use Access Analyzer APIs to scan CF templates?
 </br>
+--
 
 ## The Pain-Point
 
@@ -75,16 +74,39 @@ A notable limitation of **Access Analyzer** is its inability to **parse template
 
 A heads-up here... 
 
-> It's absolutely crucial that we have a mechanism in place that is capable of resolving dynamic references, Access Analyser cannot parse Pseudo parameters and Intrinsic Functions
+> It's absolutely crucial that we have a mechanism in place that is capable of  parsing Pseudo parameters and Intrinsic Functions. 
 
-The former is some reference to dynamic values available during runtime, for example, `Fn::Sub`, `Fn::GetAtt` Dynamic Referencing, conditionals etc
-While the latter refers to some static, predefined, maybe AWS-specific values, like AWS Account, AWS Region and so on.
+So what are these two Terms?
 
-</br>
+The former refers to some static, predefined, maybe AWS-specific values, like AWS Account, AWS Region and so on.
+While the latter is some reference to dynamic values available during runtime, for example, `Fn::Sub`, `Fn::GetAtt` Dynamic Referencing, conditionals etc
+
+
+It's really challenging for Access Analyser to walk through templates or substitute dynamic references or values. It's absolutely dependent on concrete ARNs and it assesses Policies Post deployment. _This does not serve our purpose..._
+
+Enter cfn-policy-validator
+
+The lacuna this tool fills is that it parses the template, pulls out the Identity and Resource Based Policies, And resolves such dynamic references, values with placeholder ARNs or resolving them to likely representations
+
+How? 
+
+**Policy Validation is NOT dependent on the exact / actual reource ARNs. It works by analysing the relationship between Resources and Actions**
+
+Yes, ARNs are super-important at the time of Policy ENFORCEMENT, it's critical that we are assigning the permissions in the policy to the correct resource.
+But for Policy Validation and Analysis, wherein we are analysing the Effect, Action, Condition Clauses of a Policy, so long as the ARN are structured appropriatley, well formatted ad reflecting the type of resource, and the permissions attached to it, we are good to go.
+
+This preprocessing allows for a form of static analysis on the CloudFormation template's IAM policies, making it possible to catch potential security issues before deployment.
+
+
+
+
+
+
+</br> --
 
 I came across this solution at _**AWS: ReInforce 2022**._ It's a conference aimed at making super-robust, secure solutions in the Cloud.
 
-IAM Policy Validator for AWS CloudFormation (`cfn-policy-validator`)...    
+**IAM Policy Validator for AWS CloudFormation** (`cfn-policy-validator`)...    
 It's a command-line tool, that **_parses resource-based and identity-based policies in CF Templates_**. It runs the policies through two types of Access Analyser APIs:
 
 - The `ValidatePolicy` API -- to  validate IAM Policies and SCPs against IAM Policy grammar and IAM Best Practices
