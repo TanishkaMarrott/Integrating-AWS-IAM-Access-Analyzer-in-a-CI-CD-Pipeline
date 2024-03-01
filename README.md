@@ -42,17 +42,17 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 ![image](https://github.com/TanishkaMarrott/Integrating-AWS-IAM-Access-Analyzer-in-a-CI-CD-Pipeline/assets/78227704/13167157-1519-4296-a575-4dbbae7e1368)
 
 
- - _Unwanted Public Exposure_:- Identifies resources **_accessible to an external entity_**. </br>
+ &rarr; _Unwanted Public Exposure_:- Identifies resources **_accessible to an external entity_**. </br>
 
- - _Cross-Account Resource Access_:- Helps identify ***resources that have been shared with accounts outside our organisation***, and remediates broad access. </br>
+  &rarr; _Cross-Account Resource Access_:- Helps identify ***resources that have been shared with accounts outside our organisation***, and remediates broad access. </br>
 
- - _Unused Permissions / PrivEsc Risks_:-  **_'Redundant permissions are a big no'_**. </br> Enables us to appropriately lock down policies. </br>
+  &rarr; _Unused Permissions / PrivEsc Risks_:-  **_'Redundant permissions are a big no'_**. </br> Enables us to appropriately lock down policies. </br>
 
-- _Smart Policy Recommendations_:- Thanks to AWS CloudTrail, </br> Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
+ &rarr; _Smart Policy Recommendations_:- Thanks to AWS CloudTrail, </br> Access Analyzer helps get **_smart policy recommendations_** based on access activity. </br>
 
-- _Security Best Practices_:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
+ &rarr; _Security Best Practices_:- Custom Policy Checks help **_validate against AWS's stringent standards._** </br> ---> _If it's not compliant, it's not going through._ </br>
 
-- _Automated Policy Generation_:- **_Generates fine-grained IAM policies_** based on access activity in your AWS CloudTrail logs. </br>
+ &rarr; _Automated Policy Generation_:- **_Generates fine-grained IAM policies_** based on access activity in your AWS CloudTrail logs. </br>
 
 </br>
 
@@ -61,7 +61,8 @@ It **integrates all of the AWS Services together cohesively**, enabling managed 
 
 ## The Pain-Point
 
-I was leading the Cloud Security Team at one of my previous companies.      
+I was leading the Cloud Security Team at one of my previous companies.    
+  
 Reducing the use of the wildcard (`*`) by Developer Teams, in the resource Section of IAM Policies, was really challenging.   
     
 This was primarily because we relied on the **ARNs** of resources, which were only available to us _**post-deployment**_. This meant that we lacked a mechanism to **preprocess the CF templates** for security analysis by **Access Analyzer**.
@@ -72,9 +73,11 @@ A notable limitation of **Access Analyzer** is its inability to **parse template
 
 ## The Solution - Integrating CFN Policy Validator into our CI/CD Pipeline 
 
-A heads-up here... It's absolutely crucial that we have a mechanism in place that is capable of resolving dynamic references, in order to ansure the effeectiveness of our Security Analysis. Because cloudFormation allows the use of Intrinsic Functions and Pseudo Parameters. 
+A heads-up here... 
 
-Okay, so the former is some reference to dynamic values available during runtime, for example, `Fn::Sub`, `Fn::GetAtt` Dynamic Referencing, conditionals etc
+> It's absolutely crucial that we have a mechanism in place that is capable of resolving dynamic references, Access Analyser cannot parse Pseudo parameters and Intrinsic Functions
+
+The former is some reference to dynamic values available during runtime, for example, `Fn::Sub`, `Fn::GetAtt` Dynamic Referencing, conditionals etc
 While the latter refers to some static, predefined, maybe AWS-specific values, like AWS Account, AWS Region and so on.
 
 </br>
