@@ -121,7 +121,7 @@ The `cfn-policy-validator` tool has two actions that it can perform - `parse` an
 
 `parse` - it walks through each CloudFormation resource in the template, **_extracts identity-based & resource-based IAM policies_**. While parsing a template, the tool **_resolves CloudFormation intrinsic functions  and pseudo parameters_**. 
 
-The `validate` action parses your template, **_passes the identity-based and resource-based IAM policies to Access Analyzer_**, & **_reports these findings_**
+`validate` - parses your template, **_passes the identity-based and resource-based IAM policies to Access Analyzer_**, & **_reports these findings_**
 
 #### Usage
 
