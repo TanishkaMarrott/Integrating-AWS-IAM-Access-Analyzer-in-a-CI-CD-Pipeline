@@ -2,7 +2,7 @@
 
 This project revolves around the idea - **_Security + Automation_**  
 
-We aim to elevate both efficiency and security within deployment processes by integrating a specialized tool, `cfn-policy-validator` , into a cohesive CI/CD Pipeline. This integration _**automates IAM Policy Validation Tests**_, such that **_IAM security is inherently a part of every deployment cycle_**, while automatically halting the build, in the event of its failure.  
+We aim to elevate both efficiency and security within deployment processes by integrating a specialized tool, `cfn-policy-validator`  into a cohesive CI/CD Pipeline. This integration _**automates IAM Policy Validation Tests**_, such that **_IAM security is inherently a part of every deployment cycle_**, while automatically halting the build, in the event of its failure.  
 
 --> Robust Security & Compliance throughout the Infrastructure
 
@@ -11,29 +11,32 @@ We aim to elevate both efficiency and security within deployment processes by in
 ## Core Services we've used:-
 
 - CodeCommit </br>
-Store our source code in **secure, private Git-based Repos.** </br> It's **a starting point of my pipeline**, each time a commit or a modification is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline.</ins>
+  - Store our source code in **secure, private Git-based Repos.** </br> It's **a starting point of my pipeline**, each time a commit is made to the Source Code, it <ins>acts as a trigger, for subsequent steps in the pipeline.</ins>
   
-- CodeBuild </br> **--> Automates build and test.** Compiles the source code, links the modules, <ins>bundles necessary libraries into a single standalone package</ins>, or yeah, you may also call it an 'artifact.'
+- CodeBuild </br>
+  - **<ins>--> Automates build and test.</ins>** Compiles the source code, bundles up all necessary libraries + exec code into a shippable package</ins>, or yeah, you may also call it an 'artifact.'
 
 - CodePipeline  </br>
-'Our orchestrator'. Integrates all of the services cohesively enabling managed CI and CD Service. </br>
+  - 'Our orchestrator'. Integrates all of the services cohesively. </br>
    <ins>Automates software releases</ins>, deployments = quicker + more frequent + reliable.
 
-- CloudFormation </br>Infrastructure As a Code </br> We can then define and <ins>**deploy resources in a much more reliable and repeatable manner**</ins> 
+- CloudFormation </br>
+  - IaC. We can define and <ins>**deploy resources in a much, much reliable & repeatable manner**</ins> 
 
-- Access Analyzer  </br> **Uses ML Algorithms to analyse if the policies attached to resources are overly privileged** / or if they need to be pruned down. And if the resources are exposed to the internet
+- Access Analyzer  </br>
+  - **Uses ML Algorithms to analyse overly privileged resources.** And if they're exposed to the public internet.
 
 </br>
 
 ## Key Tangibles at a Glance
 
-- **Streamlined Policy Management**: Scaling simplicity -> embedding IAM security  within every deployment cycle.
+- **Streamlining Policy Management:**: Scaling _simplicity_ --> Embedding IAM security within every deployment cycle.
 
-- **Security Standards**: Each deployment  conforms to predefined security benchmarks -> the essence of Shift-Left Security.
+- **Complying to Security Standards:**: Each deployment conforms to predefined security benchmarks --> the essence of Shift-Left Security.
 
-- **Optimized Deployment**: = Fast + Efficient + Secure
+- **Optimizing Deployment:** = Fast + Efficient + Secure
 
-- **Increased Compliance**: Policy validation checks -> compliance & reducing risks in IAM configurations.
+- **Increasing Compliance:** Policy validation checks -> compliance & reducing risks in IAM configurations.
 
 </br>
 
@@ -53,7 +56,7 @@ The tool  manages **Unused Permissions and Privilege Escalation Risks** by remov
 
 </br>
 
->  Why not directly use Access Analyzer APIs to scan CF templates?
+>  _Why not directly use Access Analyzer APIs to scan CF templates?_
 </br>
 --
 
@@ -74,23 +77,29 @@ A heads-up here...
 **Pseudo Parameters** refers to some static, predefined, maybe AWS-specific values, like AWS Account, AWS Region and so on.
 While **Intrinsic Functions** are actually some dynamic values available during runtime, for example, `Fn::Sub`, `Fn::GetAtt`, conditionals etc
 
-A notable limitation of **Access Analyzer** is its inability to **parse templates and resolve CloudFormation's dynamic parameters**. This shortfall made it **difficult to ensure our policies were as tight** and secure as possible before deployment. It's purely dependent on concrete ARNs and it assesses Policies Post deployment. _This does not serve our purpose..._
+A notable limitation of **Access Analyzer** is its inability to **parse templates and resolve CloudFormation's dynamic parameters**. This shortfall made it **difficult to ensure our policies were as tight** and secure as possible before deployment. It's purely dependent on concrete ARNs and it assesses Policies Post deployment.
 
+> _This does not serve our purpose..._
+
+</br>
 
 ## Integrating CFN Policy Validator into our CI/CD Pipeline 
 
-### What's the solution?
+### _What's the solution?_
 
 I came across this solution at _**AWS: ReInforce 2022**._ It's a conference aimed at building super-robust, secure solutions in the Cloud.
 
-**IAM Policy Validator for AWS CloudFormation** (`cfn-policy-validator`)...    
-* **_Parses resource-based and identity-based policies in CF Templates_**.
-* 
-* Runs the policies through two types of Access Analyser APIs:
-- The `ValidatePolicy` API -- to  validate IAM Policies and SCPs against IAM Policy grammar and IAM Best Practices
-- The `AccessPreview` APIs -- to determine if a resource-based policy allows Public or Cross-Account Access.
+--
 
-### How does the validator deal with intrinsic functions within policies?
+**IAM Policy Validator for AWS CloudFormation**:-
+
+* Parses resource-based and identity-based policies in CF Templates.
+  
+* Runs the policies through two types of Access Analyser APIs:
+  - `ValidatePolicy` API --> to  validate IAM Policies & SCPs against IAM Policy grammar and Best Practices
+  -  `AccessPreview` APIs --> to determine if a resource-based policy allows Public or Cross-Account Access.
+
+### _How does the validator deal with intrinsic functions within policies?_
 
 The tool deals with this by autogenerating appropriate ARNs for the referenced resource. The autogenerated ARN will have a valid ARN structure for that resource and a randomly generated name. The tool can do this and still provide valid IAM finding results because the **_structure of the ARN is what is important, not the value of the resource name._**
 
@@ -103,14 +112,6 @@ The tool deals with this by autogenerating appropriate ARNs for the referenced r
 However, in case of Policy Validation and Analysis, wherein we are analysing the Effect, Action, Condition Clauses of a Policy, so long as the ARN are structured appropriately --> **a well-formatted ARN which reflects the type of resource + permissions attached to it (via the policy statement), we are good to go.**
 
 This preprocessing allows for a form of static analysis on the CloudFormation template's IAM policies, making it **_possible to catch potential security issues**_ before deployment.
-
-
-
-
-
-
-
-
 
 </br> --
 
