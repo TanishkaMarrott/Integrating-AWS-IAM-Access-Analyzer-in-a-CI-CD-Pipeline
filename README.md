@@ -17,7 +17,7 @@ We aim to elevate both efficiency and security within deployment processes by in
   - **<ins>--> Automates build and test.</ins>** Compiles the source code, bundles up all necessary libraries + exec code into a shippable package</ins>, or yeah, you may also call it an 'artifact.'
 
 - CodePipeline  </br>
-  - 'Our orchestrator'. Integrates all of the services cohesively. </br>
+  - Orchestrates, Integrates all of the services cohesively. </br>
    <ins>Automates software releases</ins>, deployments = quicker + more frequent + reliable.
 
 - CloudFormation </br>
